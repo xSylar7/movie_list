@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, views
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
+from rest_framework import permissions
 from movies import serializers
 from .models import Movie
 # Create your views here.
@@ -10,6 +11,10 @@ from .models import Movie
 class MovieListView(generics.ListAPIView):
     queryset = Movie.objects.all()
     serializer_class = serializers.MovieSerializer
+
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     if user
 
 
 class UserCreateView (generics.CreateAPIView):
